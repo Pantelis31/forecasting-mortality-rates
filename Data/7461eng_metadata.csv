@@ -1,0 +1,412 @@
+﻿"TableInfos"
+"ID";"Title";"ShortTitle";"Identifier";"Summary";"Modified";"ReasonDelivery";"ExplanatoryText";"Language";"Catalog";"Frequency";"Period";"ShortDescription";"Description";"DefaultPresentation";"DefaultSelection";"GraphTypes";"OutputStatus";"Source";"MetaDataModified";"SearchPriority"
+"0";"Population; sex, age and marital status, 1 January; 1950-2019";"Population; age,marital status 1950-2019";"7461eng";"Population in The Netherlands by sex, age and 
+marital status, 1 January";"2019-07-15T02:00:00";"Discontinued";"";"en";"CBS";"Discontinued";"1950 - 2019";"
+This table contains the registered population in The Netherlands on 1 January by sex, age and marital status. 
+
+Data available from: 1950-2019.
+
+Status of the figures:
+All data recorded in this publication are final data.
+
+Changes as of 13 December 2019:
+None, this table is discontinued.
+
+When will new figures be published?
+Not applicable anymore.
+";"CONTENTS
+
+1. General information
+2. Definitions and explanation of symbols
+3. Links to relevant tables and articles
+4. Sources and methods
+5. Further information
+
+1. GENERAL INFORMATION
+
+This table contains the registered population in The Netherlands on 1 January by sex, age and marital status. 
+
+Data available from: 1950-2019.
+
+Status of the figures:
+All data recorded in this publication are final data.
+
+Changes as of 13 December 2019:
+None, this table is discontinued.
+
+When will new figures be published?
+Not applicable anymore.
+
+2. DEFINITIONS AND EXPLANATION OF SYMBOLS
+
+Definitions:
+
+Age
+The number of whole years that have passed between someone's date of birth and 1 January of the reference year, calculated as the reference year (-1) minus the year of birth.
+
+Marital status
+Legal status involving someone's rights and competences as determined by legal marriage and registered partnership.
+
+Marriage
+Legal, formally sanctioned living arrangement between two people.
+Since 1 April 2001, it is legally possible for people in the Netherlands to marry a person of the same sex.
+
+Population
+The total number of people residing in The Netherlands.
+In the population statistics compiled by Statistics Netherlands the inhabitants are the people registered in the population register of a Dutch municipality.
+
+Registered partnership
+A marriage-like relationship between two people of the opposite or same sex, registered at the Register of Births, Deaths and Marriages.
+Registered partnership was introduced in The Netherlands on 1 January 1998.
+
+Explanation of symbols:
+
+Empty cell	: figure not applicable
+. 		: figure is unknown, insufficiently reliable or confidential
+*		: provisional figure 
+**		: revised provisional figure
+
+3. LINKS TO RELEVANT TABLES AND ARTICLES
+
+Relevant table:
+<a href='http://statline.cbs.nl/Statweb/publication/?DM=SLEN&PA=37296eng'>Population; key figures</a>
+
+More information can be found in the themepage <a href='https://www.cbs.nl/en-gb/society/population'>Population</a>.
+
+4. SOURCES AND METHODS
+
+Break in series: late reports 
+Until 2010, reports on events taking place in a certain year received by Statistics Netherlands after 15 February in the following year were disregarded. These are so-called late reports. 
+As a result of an improvement in the production process, from 2010 these late reports are included in the year of publication (i.e. not in the year the event took place, but in the year the results are published). 
+
+Break in series
+From 2010 onwards a small shift has occurred between a number of marital statuses (fewer never married and more married, divorced and widowed respectively).
+Because information on some marital statuses was lacking for the period 1998 to 2010 in data used by Statistics Netherlands, 'partnership', 'divorced after partnership' and 'widowed after partnership' were not included in these statistics for this period. For these statistics, the marital status before the partnership was used instead, which was mostly 'never married'. From 2010 all marital statuses are available.
+
+Population
+The figures in the table refer to the registered population in the Netherlands.
+The statistics are based on information received from the municipal population register. The data refer to all persons entered in the municipal population register (the 'de jure' population). 
+Essentially, all persons residing in the Netherlands for an indefinite period of time are entered in the population register of the municipality where they usually spend the night (place of residence). People without a fixed abode but belonging to the 'de jure' population are entered in the population register of The Hague.
+Accuracy and reliability
+The information received by Statistics Netherlands is occasionally incomplete. In such cases, the lacking data are estimated.
+
+Used sources outside statistics Netherlands Municipal population register.
+
+5. FURTHER INFORMATION
+
+<a href='https://www.cbs.nl/en-gb/about-us/contact/infoservice'>Infoservice</a>
+
+Copyright © Statistics Netherlands, The Hague/Heerlen
+Reproduction is permitted, provided Statistics Netherlands is quoted as the source. ";"ts=1562666011814&graphtype=Table&r=Sex,Age&k=Topics,Periods";"$filter=((Sex eq 'T001038')) and ((Age eq '10000') or (Age eq '22000') or (Age eq '70100') or (Age eq '70200') or (Age eq '70300') or (Age eq '70400') or (Age eq '70500') or (Age eq '70600') or (Age eq '70700') or (Age eq '70800') or (Age eq '70900') or (Age eq '71000') or (Age eq '71100') or (Age eq '71200') or (Age eq '71300') or (Age eq '71400') or (Age eq '71500') or (Age eq '71600') or (Age eq '71700') or (Age eq '71800') or (Age eq '71900') or (Age eq '80000') or (Age eq '80100') or (Age eq '80200')) and ((Periods eq '1950JJ00') or (Periods eq '2000JJ00') or (Periods eq '2019JJ00'))&$select=Sex, Age, Periods, TotalPopulation_1, NeverMarried_2, Married_3, Widowed_4, Divorced_5";"Table,Bar,Line";"Discontinued";"CBS.";"2019-12-13T02:00:00";"1"
+"DataProperties"
+ID;Position;ParentID;Type;Key;Title;Description;ReleasePolicy;Datatype;Unit;Decimals;Default
+"0";"0";;"Dimension";"Sex";"Sex";;;;;;
+"1";"1";;"Dimension";"Age";"Age";;;;;;
+"2";"2";;"TimeDimension";"Periods";"Periods";;"false";;;;
+"3";"3";;"Topic";"TotalPopulation_1";"Total population";"Data refer to 1 January.
+
+Population:
+The number of people residing in the Netherlands. In the population statistics compiled by Statistics Netherlands the inhabitants of a given area are the people registered in the population register, whose address is located in that area.";;"Long";"number";"0";"Impossible"
+"4";"4";;"Topic";"NeverMarried_2";"Never married";"Never married population.
+
+Break in series
+From 2010 onwards a small shift has occurred between a number of marital statuses (fewer never married and more divorced and widowed respectively). Because information on some marital statuses was lacking for the period 1998 to 2010 in data used by Statistics Netherlands, 'divorces after partnership' and 'widowed after partnership' were not included in these statistics for this period. For these statistics, the marital status before the partnership was used instead, which was mostly 'never married'. From 2010 all marital statuses are available.
+
+Population:
+The number of people residing in The Netherlands. In the population statistics compiled by Statistics Netherlands the inhabitants are the people registered in the population register of a Dutch municipality.
+
+Never married:
+From 2010: marital status indicating that someone was never married or never in a registered partnership.
+1998 until 2010: marital status indicating that someone was never married or never in a registered partnership.
+Because information was lacking on some marital statuses in the period 1998 to 2010 in data used by Statistics Netherlands, 'widowed after partnership' and 'divorces after partnership' were not included in this period in these statistics. For these statistics this means that the marital status before the partnership was used, wich was mostly unmarried.
+Until 1998: marital status indicating that someone was never married.
+
+Marriage:
+Legal, formally sanctioned living arrangement between two people. Since 1 April 2001, it is legally possible for people in the Netherlands to marry a person of the same sex.
+
+Registered partnership:
+A marriage-like relationship between two people of the opposite or same sex, registered at the Register of Births, Deaths and Marriages. Registered partnership was introduced in The Netherlands on 1 January 1998.";;"Long";"number";"0";"Impossible"
+"5";"5";;"Topic";"Married_3";"Married";"Married population.
+
+Break in series
+From 2010 onwards a small shift has occurred between a number of marital statuses (fewer never married and more divorced and widowed respectively). Because information on some marital statuses was lacking for the period 1998 to 2010 in data used by Statistics Netherlands, 'divorces after partnership' and 'widowed after partnership' were not included in these statistics for this period. For these statistics, the marital status before the partnership was used instead, which was mostly 'never married'. From 2010 all marital statuses are available.
+
+Population:
+The number of people residing in The Netherlands. In the population statistics compiled by Statistics Netherlands the inhabitants are the people registered in the population register of a Dutch municipality.
+
+Married:
+From 1998: legally married and partnership.
+Until 1998: legally married.
+
+Legally married:
+Marital status resulting from having married legally. Including judicial separations which are included in the catagory married.
+
+Partnership:
+Marital status resulting from entering into a registered partnership.
+
+Marriage:
+Legal, formally sanctioned living arrangement between two people. Since 1 April 2001, it is legally possible for people in the Netherlands to marry a person of the same sex.
+
+Registered partnership:
+A marriage-like relationship between two people of the opposite or same sex, registered at the Register of Births, Deaths and Marriages. Registered partnership was introduced in The Netherlands on 1 January 1998.";;"Long";"number";"0";"Impossible"
+"6";"6";;"Topic";"Widowed_4";"Widowed";"Widowed population.
+
+Break in series
+From 2010 onwards a small shift has occurred between a number of marital statuses (fewer never married and more divorced and widowed respectively). Because information on some marital statuses was lacking for the period 1998 to 2010 in data used by Statistics Netherlands, 'divorces after partnership' and 'widowed after partnership' were not included in these statistics for this period. For these statistics, the marital status before the partnership was used instead, which was mostly 'never married'. From 2010 all marital statuses are available.
+
+Population:
+The number of people residing in The Netherlands. In the population statistics compiled by Statistics Netherlands the inhabitants are the people registered in the population register of a Dutch municipality.
+
+Widowed:
+From 2010: widowed after a legal marriage and widowed after a partnership.
+Until 2010: widowed after a legal marriage. Because information was lacking on some marital statuses in the period
+1998 to 2010 in data used by Statistics Netherlands, widowed after a partnership is not included in this period in these statistics.
+
+Widowed after a legal marriage:
+Marital status resulting from death ending a legal marriage.
+
+Widowed after a partnership:
+Marital status resulting from death ending a registered partnership.
+
+Marriage:
+Legal, formally sanctioned living arrangement between two people. Since 1 April 2001, it is legally possible for people in the Netherlands to marry a person of the same sex.
+
+Registered partnership:
+A marriage-like relationship between two people of the opposite or same sex, registered at the Register of Births, Deaths and Marriages. Registered partnership was introduced in The Netherlands on 1 January 1998.";;"Long";"number";"0";"Impossible"
+"7";"7";;"Topic";"Divorced_5";"Divorced";"Divorced population.
+
+Break in series
+From 2010 onwards a small shift has occurred between a number of marital statuses (fewer never married and more divorced and widowed respectively). Because information on some marital statuses was lacking for the period 1998 to 2010 in data used by Statistics Netherlands, 'divorces after partnership' and 'widowed after partnership' were not included in these statistics for this period. For these statistics, the marital status before the partnership was used instead, which was mostly 'never married'. From 2010 all marital statuses are available.
+
+Population:
+The number of people residing in The Netherlands. In the population statistics compiled by Statistics Netherlands the inhabitants are the people registered in the population register of a Dutch municipality.
+
+Divorced:
+From 2010: divorced after legal marriage and divorced after partnership.
+Until 2010: divorced after legal marriage. Because information was lacking on some marital statuses in the period
+1998 to 2010 in data used by Statistics Netherlands, divorced after partnership is not included in this period in these statistics.
+
+Divorced after a legal marriage
+Marital status resulting from ending a legal marriage by divorce. Excluding judicial separations which are included in the catagory married.
+
+Divorced after a partnership
+Marital status resulting from ending a registered partnership other than by the death of the partner.
+
+Marriage:
+Legal, formally sanctioned living arrangement between two people. Since 1 April 2001, it is legally possible for people in the Netherlands to marry a person of the same sex.
+
+Registered partnership:
+A marriage-like relationship between two people of the opposite or same sex, registered at the Register of Births, Deaths and Marriages. Registered partnership was introduced in The Netherlands on 1 January 1998.";;"Long";"number";"0";"Impossible"
+"Sex"
+Key;Title;Description
+"T001038";"Men and women";
+"3000   ";"Men";
+"4000   ";"Women";
+"Age"
+Key;Title;Description
+"10000";"Total population (all ages)";
+"10010";"0 years";
+"10100";"1 years";
+"10200";"2 years";
+"10300";"3 years";
+"10400";"4 years";
+"10500";"5 years";
+"10600";"6 years";
+"10700";"7 years";
+"10800";"8 years";
+"10900";"9 years";
+"11000";"10 years";
+"11100";"11 years";
+"11200";"12 years";
+"11300";"13 years";
+"11400";"14 years";
+"11500";"15 years";
+"11600";"16 years";
+"11700";"17 years";
+"11800";"18 years";
+"11900";"19 years";
+"12000";"20 years";
+"12100";"21 years";
+"12200";"22 years";
+"12300";"23 years";
+"12400";"24 years";
+"12500";"25 years";
+"12600";"26 years";
+"12700";"27 years";
+"12800";"28 years";
+"12900";"29 years";
+"13000";"30 years";
+"13100";"31 years";
+"13200";"32 years";
+"13300";"33 years";
+"13400";"34 years";
+"13500";"35 years";
+"13600";"36 years";
+"13700";"37 years";
+"13800";"38 years";
+"13900";"39 years";
+"14000";"40 years";
+"14100";"41 years";
+"14200";"42 years";
+"14300";"43 years";
+"14400";"44 years";
+"14500";"45 years";
+"14600";"46 years";
+"14700";"47 years";
+"14800";"48 years";
+"14900";"49 years";
+"15000";"50 years";
+"15100";"51 years";
+"15200";"52 years";
+"15300";"53 years";
+"15400";"54 years";
+"15500";"55 years";
+"15600";"56 years";
+"15700";"57 years";
+"15800";"58 years";
+"15900";"59 years";
+"16000";"60 years";
+"16100";"61 years";
+"16200";"62 years";
+"16300";"63 years";
+"16400";"64 years";
+"16500";"65 years";
+"16600";"66 years";
+"16700";"67 years";
+"16800";"68 years";
+"16900";"69 years";
+"17000";"70 years";
+"17100";"71 years";
+"17200";"72 years";
+"17300";"73 years";
+"17400";"74 years";
+"17500";"75 years";
+"17600";"76 years";
+"17700";"77 years";
+"17800";"78 years";
+"17900";"79 years";
+"18000";"80 years";
+"18100";"81 years";
+"18200";"82 years";
+"18300";"83 years";
+"18400";"84 years";
+"18500";"85 years";
+"18600";"86 years";
+"18700";"87 years";
+"18800";"88 years";
+"18900";"89 years";
+"19000";"90 years";
+"19100";"91 years";
+"19200";"92 years";
+"19300";"93 years";
+"19400";"94 years";
+"19500";"95 years";
+"19600";"96 years";
+"19700";"97 years";
+"19800";"98 years";
+"21900";"90 years or older";
+"22000";"95 years or older";
+"22100";"99 years or older";
+"60100";"0 to 10 years";
+"60200";"10 to 20 years";
+"60300";"20 to 30 years";
+"60400";"30 to 40 years";
+"60500";"40 to 50 years";
+"60600";"50 to 60 years";
+"60700";"60 to 70 years";
+"60800";"70 to 80 years";
+"60900";"80 to 90 years";
+"70100";"0 to 5 years";
+"70200";"5 to 10 years";
+"70300";"10 to 15 years";
+"70400";"15 to 20 years";
+"70500";"20 to 25 years";
+"70600";"25 to 30 years";
+"70700";"30 to 35 years";
+"70800";"35 to 40 years";
+"70900";"40 to 45 years";
+"71000";"45 to 50 years";
+"71100";"50 to 55 years";
+"71200";"55 to 60 years";
+"71300";"60 to 65 years";
+"71400";"65 to 70 years";
+"71500";"70 to 75 years";
+"71600";"75 to 80 years";
+"71700";"80 to 85 years";
+"71800";"85 to 90 years";
+"71900";"90 to 95 years";
+"80000";"0 to 20 years";
+"80100";"20 to 65 years";
+"80200";"65 years or older";
+"Periods"
+Key;Title;Description;Status
+"1950JJ00";"1950";;"Definitief"
+"1951JJ00";"1951";;"Definitief"
+"1952JJ00";"1952";;"Definitief"
+"1953JJ00";"1953";;"Definitief"
+"1954JJ00";"1954";;"Definitief"
+"1955JJ00";"1955";;"Definitief"
+"1956JJ00";"1956";;"Definitief"
+"1957JJ00";"1957";;"Definitief"
+"1958JJ00";"1958";;"Definitief"
+"1959JJ00";"1959";;"Definitief"
+"1960JJ00";"1960";;"Definitief"
+"1961JJ00";"1961";;"Definitief"
+"1962JJ00";"1962";;"Definitief"
+"1963JJ00";"1963";;"Definitief"
+"1964JJ00";"1964";;"Definitief"
+"1965JJ00";"1965";;"Definitief"
+"1966JJ00";"1966";;"Definitief"
+"1967JJ00";"1967";;"Definitief"
+"1968JJ00";"1968";;"Definitief"
+"1969JJ00";"1969";;"Definitief"
+"1970JJ00";"1970";;"Definitief"
+"1971JJ00";"1971";;"Definitief"
+"1972JJ00";"1972";;"Definitief"
+"1973JJ00";"1973";;"Definitief"
+"1974JJ00";"1974";;"Definitief"
+"1975JJ00";"1975";;"Definitief"
+"1976JJ00";"1976";;"Definitief"
+"1977JJ00";"1977";;"Definitief"
+"1978JJ00";"1978";;"Definitief"
+"1979JJ00";"1979";;"Definitief"
+"1980JJ00";"1980";;"Definitief"
+"1981JJ00";"1981";;"Definitief"
+"1982JJ00";"1982";;"Definitief"
+"1983JJ00";"1983";;"Definitief"
+"1984JJ00";"1984";;"Definitief"
+"1985JJ00";"1985";;"Definitief"
+"1986JJ00";"1986";;"Definitief"
+"1987JJ00";"1987";;"Definitief"
+"1988JJ00";"1988";;"Definitief"
+"1989JJ00";"1989";;"Definitief"
+"1990JJ00";"1990";;"Definitief"
+"1991JJ00";"1991";;"Definitief"
+"1992JJ00";"1992";;"Definitief"
+"1993JJ00";"1993";;"Definitief"
+"1994JJ00";"1994";;"Definitief"
+"1995JJ00";"1995";;"Definitief"
+"1996JJ00";"1996";;"Definitief"
+"1997JJ00";"1997";;"Definitief"
+"1998JJ00";"1998";;"Definitief"
+"1999JJ00";"1999";;"Definitief"
+"2000JJ00";"2000";;"Definitief"
+"2001JJ00";"2001";;"Definitief"
+"2002JJ00";"2002";;"Definitief"
+"2003JJ00";"2003";;"Definitief"
+"2004JJ00";"2004";;"Definitief"
+"2005JJ00";"2005";;"Definitief"
+"2006JJ00";"2006";;"Definitief"
+"2007JJ00";"2007";;"Definitief"
+"2008JJ00";"2008";;"Definitief"
+"2009JJ00";"2009";;"Definitief"
+"2010JJ00";"2010";;"Definitief"
+"2011JJ00";"2011";;"Definitief"
+"2012JJ00";"2012";;"Definitief"
+"2013JJ00";"2013";;"Definitief"
+"2014JJ00";"2014";;"Definitief"
+"2015JJ00";"2015";;"Definitief"
+"2016JJ00";"2016";;"Definitief"
+"2017JJ00";"2017";;"Definitief"
+"2018JJ00";"2018";;"Definitief"
+"2019JJ00";"2019";;"Definitief"
