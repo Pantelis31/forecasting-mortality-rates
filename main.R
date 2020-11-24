@@ -1,10 +1,3 @@
----
-title: '2020-03-23'
-output: pdf_document
----
-
-```{r,  echo = FALSE, message = FALSE}
-#--------------------------LOAD PACKAGES-------------------------#
 library(fda.usc)
 library(ftsa)
 library(fda)
@@ -17,14 +10,7 @@ library(base)
 library(ggplot2)
 library(glmnet)
 library(gridExtra)
-```
 
-
-
-\section{Data preparation and exploratory analysis}
-
-
-```{r}
 #--------------- READING THE DATA -----------------------#
 
 Mortality <- as.data.frame(read.table("Data/7052eng_UntypedDataSet_23032020_165127.csv", header = TRUE, sep = ";"))
@@ -67,10 +53,10 @@ levels(Mortality$Sex) <- c("M", "F", "T")
 
 
 ## Fix Age variable encodings which are a bit different in the two datasets.
- # We need to create a new age group in the Population dataset (51300), 
- # containing the 1 to 5 ages like in the Mortality data.
- # So, we need to substract the population of newborns from the 0-5 age group.
- # We want to keep the newborns as a separate group.
+# We need to create a new age group in the Population dataset (51300), 
+# containing the 1 to 5 ages like in the Mortality data.
+# So, we need to substract the population of newborns from the 0-5 age group.
+# We want to keep the newborns as a separate group.
 
 
 #levels(as.factor(Mortality$Age)) #10010: 0, 51300: 1-5
@@ -90,20 +76,20 @@ Ratio_data <- merge(Population, Mortality, by = c("Sex", "Year", "Age"))
 
 #Plots
 p1 <-  ggplot(Population %>%
-       filter(Age == 10000), aes(x = Year, y = Population)) +
-       geom_point(aes(col=Sex)) +
-       geom_line(aes(col=Sex)) +
-       labs(title = "Population in the Netherlands", subtitle = "For males and females") +
-       theme(legend.position="bottom") +
-       xlab("Year")
+              filter(Age == 10000), aes(x = Year, y = Population)) +
+              geom_point(aes(col=Sex)) +
+              geom_line(aes(col=Sex)) +
+              labs(title = "Population in the Netherlands", subtitle = "For males and females") +
+              theme(legend.position="bottom") +
+              xlab("Year")
 
 p2 <- ggplot(Mortality %>%
-      filter(Age == 10000), aes(x = Year, y = Total_deaths)) +
-      geom_point(aes(col=Sex)) +
-      geom_line(aes(col=Sex)) +
-      labs(title = "Mortality in the Netherlands", subtitle = "For males and females") +
-      theme(legend.position="bottom") +
-      xlab("Year")
+             filter(Age == 10000), aes(x = Year, y = Total_deaths)) +
+             geom_point(aes(col=Sex)) +
+             geom_line(aes(col=Sex)) +
+             labs(title = "Mortality in the Netherlands", subtitle = "For males and females") +
+             theme(legend.position="bottom") +
+             xlab("Year")
 
 grid.arrange(p1, p2, ncol = 2)
 
@@ -111,11 +97,6 @@ grid.arrange(p1, p2, ncol = 2)
 # No missing values
 summary(Ratio_data)
 
-```
-
-
-
-```{r}
 #--------------------- CALCULATING MORTALITY RATIOS ------------------
 
 # Mortality ratios
@@ -129,27 +110,27 @@ Ratio_data$log_ratio <- log(Ratio_data$Mortality_ratio)
 
 # Plot sex-specific log ratios 
 ggplot(Ratio_data %>%
-       filter(Age == 10000, Sex != "T"), aes(x = Year, y = log_ratio, group = Sex)) +
-       geom_point(aes(col = Sex)) +
-       geom_line(aes(col = Sex)) +
-       labs(title = "Log-Mortality rates in the Netherlands", subtitle = "For males and females separately") +
-       ylab("log-mortality rate")
+      filter(Age == 10000, Sex != "T"), aes(x = Year, y = log_ratio, group = Sex)) +
+  geom_point(aes(col = Sex)) +
+  geom_line(aes(col = Sex)) +
+  labs(title = "Log-Mortality rates in the Netherlands", subtitle = "For males and females separately") +
+  ylab("log-mortality rate")
 
 
 # Plot population of two age groups
 p3 <- ggplot(Ratio_data %>%
-      filter(Age == 22000, Sex == "T" ), aes(x = Year, y = Population, group = 1)) +
-      geom_point() +
-      geom_line() +
-      labs(title = "Population of 95+ year old group") +
-      xlab("Year")
+            filter(Age == 22000, Sex == "T" ), aes(x = Year, y = Population, group = 1)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Population of 95+ year old group") +
+  xlab("Year")
 
 p4 <- ggplot(Ratio_data %>%
-      filter(Age == 10010, Sex == "T" ), aes(x = Year, y = Population, group = 1)) +
-      geom_point() +
-      geom_line() +
-      labs(title = "Population of <1 year old group") +
-      xlab("Year")
+            filter(Age == 10010, Sex == "T" ), aes(x = Year, y = Population, group = 1)) +
+  geom_point() +
+  geom_line() +
+  labs(title = "Population of <1 year old group") +
+  xlab("Year")
 
 grid.arrange(p3, p4, ncol = 2)
 
@@ -166,24 +147,15 @@ Life_exp <- Life_exp %>%
 
 
 ggplot(Life_exp,
-      aes(x = as.factor(Periods), y = Life.expectancy, fill = Sex)) +
-      geom_bar(position="dodge", stat="identity") +
-      labs(title = "Life expectancy") +
-      ylab("Life expectancy") +
-      theme(axis.text.x = element_text(angle=60, hjust=1), legend.position = "bottom") +
-      xlab("Year") +
-      scale_fill_manual(values=c("red", "orange"))
+       aes(x = as.factor(Periods), y = Life.expectancy, fill = Sex)) +
+  geom_bar(position="dodge", stat="identity") +
+  labs(title = "Life expectancy") +
+  ylab("Life expectancy") +
+  theme(axis.text.x = element_text(angle=60, hjust=1), legend.position = "bottom") +
+  xlab("Year") +
+  scale_fill_manual(values=c("red", "orange"))
 
 levels(as.factor(Ratio_data$Age))
-```
-
-
-
-\section{Functional data smoothing using B-splines}
-
-
-
-```{r}
 
 #---------------------------- PREPARATION FOR SMOOTHING ---------------------
 
@@ -208,12 +180,10 @@ Ratio_wide <- Ratio_data %>%
 # We have 20 age groups
 #0 corresponds to newborns (10010) and 100 corresponds 95+ age group
 age_points <- seq(from = 0, to = 100, by = 5)
-```
 
 
-Test the impact of K, at the smoothed curve (only for visualization)
+## ---------------- Test the impact of K, at the smoothed curve (only for visualization)
 
-```{r}
 #Now we need to estimate the coefficients in order to produce the smooth function.
 #We are doing that using OLS
 #Y is the mortality ratios of females of every age, at 2000. We want to fit a smooth curve to its data points.
@@ -249,12 +219,6 @@ lines(age_points, Yhat2, lwd=1, col="black")
 legend("bottomright", legend = c("K=4", "K=50"), col = c("red", "black"),lty=1:2)
 
 
-```
-
-
-Penalized B-splines smoothing
-
-```{r}
 #---------------------------- PENALIZED B-SPLINES SMOOTHING ---------------------
 
 set.seed(1993) 
@@ -265,7 +229,7 @@ yf <- as.matrix(Ratio_wide %>% filter(Sex == "F") %>% select(-c(Sex, Age)))
 
 
 ### In order to choose the best value for lambda, we compute the RMSE, GCV and degrees of freedom
-  # for a sequence of values for lambda.
+# for a sequence of values for lambda.
 summarise_penalties <- function(loglambdas, basis_expansion, data, argvalues, fdParobj){
   #Initializing an empty dataframe, based on the length of lambdas sequence
   results <- numeric(0)
@@ -301,7 +265,8 @@ penalty_summary <- summarise_penalties(loglambdas, basis_expansion = basis_exppe
 
 
 #Plot the change of GCV value
-plot(penalty_summary$`log-lambda`, penalty_summary$GCV, xlab = "Log-lamnda", ylab = "GCV value", main = "GCV criterion", type = "b")
+plot(penalty_summary$`log-lambda`, penalty_summary$GCV, xlab = "Log-lamnda",
+     ylab = "GCV value", main = "GCV criterion", type = "b")
 
 #Optimal log lambda is equal to -9. Has the lowest GCV and RMSE values.
 lambda <- 10^(-15)
@@ -317,13 +282,13 @@ mortalityfd_f <- mortality_smooth_f$fd
 
 ## Unsmoothed data
 dataM <- fts(age_points, Ratio_wide %>%
-              filter(Sex == "M") %>%
-              select(-c(Sex, Age)), xname = "Age", yname = "Log-Mortality")
+               filter(Sex == "M") %>%
+               select(-c(Sex, Age)), xname = "Age", yname = "Log-Mortality")
 
 
 dataF <- fts(age_points, Ratio_wide %>%
-              filter(Sex == "F") %>%
-              select(-c(Sex, Age)), xname = "Age", yname = "Log-Mortality")
+               filter(Sex == "F") %>%
+               select(-c(Sex, Age)), xname = "Age", yname = "Log-Mortality")
 
 
 ### Plots for males
@@ -366,18 +331,10 @@ legend("bottomright", legend = c("1950", "1984", "2018"), col = c("red", "green"
 # Smooth functional time series
 smoothM <- fts(age_points, eval.fd(age_points, mortalityfd_m), xname = "Age", yname = "Log-Mortality")
 smoothF <- fts(age_points, eval.fd(age_points, mortalityfd_f), xname = "Age", yname = "Log-Mortality")
-```
 
 
 
-\section{Model fitting}
-
-\subsection{Fitting FPCA and weighted FPCA for both genders separately}
-
-- Start by fitting both models on the male population
-
-```{r}
-###----------------------- FPCA MODELS -----------------------
+###----------------------- FPCA MODELS ON MALE POPULATION-----------------------
 
 ##First two principal components for visualization
 plot(forecast(ftsm(smoothM, order = 2), h = 20), "components")
@@ -407,7 +364,7 @@ train_smooth_m <- smooth.basis(argvals = age_points,
                                                filter(Sex == "M") %>%
                                                select(-c(Sex, Age)) %>%
                                                select(`1950`:`1999`)),
-                                            fdParobj = fdParobj)$fd
+                               fdParobj = fdParobj)$fd
 #Smooth forecasts
 fpca_forecasts_m_6 <- smooth.basis(argvals = age_points, y = fpca_m_6$mean$y, 
                                    fdParobj)$fd
@@ -450,7 +407,7 @@ plot.fmres(residuals.fm(ftsm(y_train_m, order = 6, weight = TRUE)),
 
 #Smoothing the forecasts
 wfpca_forecasts_m_6 <- smooth.basis(argvals = age_points, y = wfpca_m_6$mean$y, 
-                                   fdParobj = fdParobj)$fd
+                                    fdParobj = fdParobj)$fd
 
 
 ### Plot data with forecasts
@@ -460,17 +417,9 @@ plot.fd(train_smooth_m, col = "grey",
 legend("topleft", legend = c("2000", "2018"), col = c("red", "purple"), lty = 1:2)
 plot.fd(wfpca_forecasts_m_6, col = rainbow(19), add = TRUE)
 
-```
 
 
-- Apply the same methodology on the female population
-
-
-
-```{r}
-
-
-###----------------------- FPCA MODELS -----------------------
+###----------------------- FPCA MODELS ON FEMALE POPULATION-----------------------
 
 
 ##First two principal components for visualization
@@ -506,7 +455,7 @@ train_smooth_f <- smooth.basis(argvals = age_points,
                                                filter(Sex == "F") %>%
                                                select(-c(Sex, Age)) %>%
                                                select(`1950`:`1999`)),
-                                            fdParobj = fdParobj)$fd
+                               fdParobj = fdParobj)$fd
 
 ### Plot data with forecasts
 plot.fd(train_smooth_f, col = "grey", 
@@ -542,7 +491,7 @@ plot.fmres(residuals.fm(ftsm(y_train_f, order = 6, weight = TRUE)),
 
 #Smoothing the forecasts
 wfpca_forecasts_f_6 <- smooth.basis(argvals = age_points, y = wfpca_f_6$mean$y, 
-                                   fdParobj = fdParobj)$fd
+                                    fdParobj = fdParobj)$fd
 
 ### Plot data with forecasts
 plot.fd(train_smooth_f, col = "grey", 
@@ -552,19 +501,8 @@ legend("topleft", legend = c("2000", "2018"), col = c("red", "purple"), lty = 1:
 plot.fd(wfpca_forecasts_f_6, col = rainbow(19), add = TRUE)
 
 
-```
 
-
-
-
-\subsection{Fitting FPLSR models}
-
-
-- Male population
-
-```{r}
-
-###------------------Functional Partial Least Squares------------------------
+###------------------Functional Partial Least Squares on male population ------------------------
 
 ##Forecasts for different values of K
 fplsr_m_4 <- forecastfplsr(y_train_m, components = 4, h = 19)
@@ -593,7 +531,7 @@ plot(fplsr_res_m , plot.type = "functions",
 
 # Smooth forecasts
 fplsr_forecasts_m_6 <- smooth.basis(argvals = age_points, y = fplsr_m_6$y, 
-                                   fdParobj = fdParobj)$fd
+                                    fdParobj = fdParobj)$fd
 
 #Plot data with forecasts for K=6
 plot.fd(train_smooth_m, col = "grey", 
@@ -604,14 +542,7 @@ plot.fd(fplsr_forecasts_m_6, col = rainbow(19), add = TRUE)
 
 
 
-```
-
-
-
-- Female Population
-
-```{r}
-###------------------Functional Partial Least Squares------------------------
+###------------------Functional Partial Least Squares on female population ------------------------
 
 ##Forecasts for different values of K
 fplsr_f_4 <- forecastfplsr(y_train_f, components = 4, h = 19)
@@ -634,7 +565,7 @@ plot(fplsr_res_f , plot.type = "functions",
 
 # Smooth forecasts
 fplsr_forecasts_f_6 <- smooth.basis(argvals = age_points, y = fplsr_f_6$y, 
-                                   fdParobj = fdParobj)$fd
+                                    fdParobj = fdParobj)$fd
 
 #Plot data with forecasts for K=6
 plot.fd(train_smooth_f, col = "grey", 
@@ -642,12 +573,10 @@ plot.fd(train_smooth_f, col = "grey",
         main = "Forecasts for females")
 legend("topleft", legend = c("2000", "2018"), col = c("red", "purple"), lty = 1:2)
 plot.fd(fplsr_forecasts_f_6, col = rainbow(19), add = TRUE)
-```
 
 
-- Produce Plots
 
-```{r}
+### --------------------- Produce Plots ------------------------
 ###RESIDUALS FPCA
 par(mfrow = c(1,2))
 
@@ -725,24 +654,16 @@ legend("topleft", legend = c("2000", "2018"), col = c("red", "purple"), lty = 1:
 plot.fd(fplsr_forecasts_f_6, col = rainbow(19), add = TRUE)
 
 
-```
-
-
-
-- Compute RMSE by year
-
-
-```{r}
 #---------------------- MODEL EVALUATION FOR MALES -------------------------
 
 ### First we are going to create a function that takes the forecasts and test data as input.
- ## And then computes some errors
- ##Test set 
+## And then computes some errors
+##Test set 
 y_test_m <- as.data.frame(eval.fd(age_points, mortalityfd_m)) %>% select(`2000`:`2018`)             
-              
+
 
 ### Compute the RMSE for each curve (2000-2018)
- ## For every model
+## For every model
 
 # FPCA models
 fpca_m_4_rmse <- apply(fpca_m_4$mean$y - y_test_m, 2, function(x) round(sqrt(mean(x^2)), digits = 3))
@@ -770,12 +691,12 @@ apply(eval_males[ ,-20], 1, FUN = mean)
 #---------------------- MODEL EVALUATION FOR FEMALES -------------------------
 
 ### First we are going to create a function that takes the forecasts and test data as input.
- ## And then computes some errors
- ##Test set 
+## And then computes some errors
+##Test set 
 y_test_f <- as.data.frame(eval.fd(age_points, mortalityfd_f)) %>% select(`2000`:`2018`) 
 
 ### Compute the RMSE for each curve (2000-2018)
- ## For every model
+## For every model
 fpca_f_4_rmse <- apply(fpca_f_4$mean$y - y_test_f, 2, function(x) round(sqrt(mean(x^2)), digits = 3))
 fpca_f_6_rmse <- apply(fpca_f_6$mean$y - y_test_f, 2, function(x) round(sqrt(mean(x^2)), digits = 3))
 fpca_f_8_rmse <- apply(fpca_f_8$mean$y - y_test_f, 2, function(x) round(sqrt(mean(x^2)), digits = 3))
@@ -795,51 +716,40 @@ eval_females$model <- c("FPCA", "WFPCA", "FPLSR")
 
 
 apply(eval_females[ ,-20], 1, FUN = mean)
-```
 
-
-```{r}
-# MALES
 p5 <- ggplot( eval_males %>%
-      gather(key = "Year", value = "RMSE", `2000`:`2018`),
-      aes(x = as.numeric(Year), y = RMSE, group = model)) +
-      geom_line(aes(col = model)) +
-      geom_point(aes(col = model)) +
-      labs(title = "Model evaluation for males") +
-      ylab("RMSE") +
-      theme(axis.text.x = element_text(angle=60, hjust=1)) +
-      xlab("Year") +
-      theme(legend.title = element_text(color = "black", size = 10),
-            legend.text = element_text(color = "black", size = 6))
+                gather(key = "Year", value = "RMSE", `2000`:`2018`),
+              aes(x = as.numeric(Year), y = RMSE, group = model)) +
+  geom_line(aes(col = model)) +
+  geom_point(aes(col = model)) +
+  labs(title = "Model evaluation for males") +
+  ylab("RMSE") +
+  theme(axis.text.x = element_text(angle=60, hjust=1)) +
+  xlab("Year") +
+  theme(legend.title = element_text(color = "black", size = 10),
+        legend.text = element_text(color = "black", size = 6))
 
 
 # FEMALES
 p6 <- ggplot( eval_females %>%
-      gather(key = "Year", value = "RMSE", `2000`:`2018`),
-      aes(x = as.numeric(Year), y = RMSE, group = model)) +
-      geom_line(aes(col = model)) +
-      geom_point(aes(col = model)) +
-      labs(title = "Model evaluation for females") +
-      ylab("RMSE") +
-      theme(axis.text.x = element_text(angle=60, hjust=1)) +
-      xlab("Year") +
-      theme(legend.title = element_text(color = "black", size = 10),
-            legend.text = element_text(color = "black", size = 6))
+                gather(key = "Year", value = "RMSE", `2000`:`2018`),
+              aes(x = as.numeric(Year), y = RMSE, group = model)) +
+  geom_line(aes(col = model)) +
+  geom_point(aes(col = model)) +
+  labs(title = "Model evaluation for females") +
+  ylab("RMSE") +
+  theme(axis.text.x = element_text(angle=60, hjust=1)) +
+  xlab("Year") +
+  theme(legend.title = element_text(color = "black", size = 10),
+        legend.text = element_text(color = "black", size = 6))
 
 
 grid.arrange(p5, p6, ncol = 2)
-```
 
 
 
-- Compute RMSE by age
-
-
-
-
-```{r}
 ### Compute the RMSE for each age group
- ## For every model
+## For every model
 
 
 ### MALE POPULATION
@@ -875,53 +785,32 @@ colnames(eval_females2) <- as.character(age_points)
 eval_females2$model <- c("FPCA", "WFPCA", "FPLSR")
 
 apply(eval_females2[ ,-22], 1, FUN = mean)
-```
 
 
-
-```{r}
 # MALES
 p7 <- ggplot( eval_males2 %>%
-      gather(key = "Age", value = "RMSE", `0`:`100`),
-      aes(x = as.numeric(Age), y = RMSE, group = model)) +
-      geom_line(aes(col = model)) +
-      geom_point(aes(col = model)) +
-      labs(title = "Model evaluation for males") +
-      ylab("RMSE") +
-      xlab("Age") +
-      theme(legend.title = element_text(color = "black", size = 10),
-            legend.text = element_text(color = "black", size = 6))
+                gather(key = "Age", value = "RMSE", `0`:`100`),
+              aes(x = as.numeric(Age), y = RMSE, group = model)) +
+  geom_line(aes(col = model)) +
+  geom_point(aes(col = model)) +
+  labs(title = "Model evaluation for males") +
+  ylab("RMSE") +
+  xlab("Age") +
+  theme(legend.title = element_text(color = "black", size = 10),
+        legend.text = element_text(color = "black", size = 6))
 
 
 # FEMALES
 p8 <- ggplot( eval_females2 %>%
-      gather(key = "Age", value = "RMSE", `0`:`100`),
-      aes(x = as.numeric(Age), y = RMSE, group = model)) +
-      geom_line(aes(col = model)) +
-      geom_point(aes(col = model)) +
-      labs(title = "Model evaluation for females") +
-      ylab("RMSE") +
-      xlab("Age") +
-      theme(legend.title = element_text(color = "black", size = 10),
-            legend.text = element_text(color = "black", size = 6))
+                gather(key = "Age", value = "RMSE", `0`:`100`),
+              aes(x = as.numeric(Age), y = RMSE, group = model)) +
+  geom_line(aes(col = model)) +
+  geom_point(aes(col = model)) +
+  labs(title = "Model evaluation for females") +
+  ylab("RMSE") +
+  xlab("Age") +
+  theme(legend.title = element_text(color = "black", size = 10),
+        legend.text = element_text(color = "black", size = 6))
 
 
 grid.arrange(p7, p8, ncol = 2)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

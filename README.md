@@ -6,10 +6,10 @@
 ## General Info
 
 ### Contents:
-* **main.Rmd** is the main RMarkdown file where all the analysis is conducted.
+* **main.R** is the main R script where all the analysis is conducted.
 * The Figures folder contains all the figures that are produced in main.Rmd.
 * The Data folder contains the Population and Mortality data from the Central Agency for Statistics in the Netherlands, as well as metadata.
-* **Report.pdf** is a report in the form of a scientific article, which includes a detailed explanation of FDA and all methods that were applied in this project. Additionally, it contains an exploratory analysis, the modeling proccess and references. 
+* **Thesis.pdf** is a report in the form of a scientific article, which includes a detailed explanation of FDA and all methods that were applied in this project. Additionally, it contains an exploratory analysis, the modeling proccess and references. 
 
 ### Libraries:
 - gridExtra 2.3
